@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, render_template, send_file, send_from_directory
 from flask_cors import CORS
-from flask_restplus import Api
+from flask_restx import Api
 
 from .image_resource import api as images_api
 from .thumbnails import SMALL_THUMBNAIL_DIR

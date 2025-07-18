@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 from flask import current_app as app
 from flask import request
-from flask_restplus import Namespace, Resource, fields
+from flask_restx import Namespace, Resource, fields
 
 from .schema import Image
 from .thumbnails import SMALL_THUMBNAIL_DIR
