@@ -43,6 +43,11 @@ def save_new_image_events(room_id, limit=None):
         events = islice(events, limit)
     for event in events:
         content = event['content']
+        # Verifica se 'url' existe em 'content' antes de acessá-lo
+        if 'url' not in content:
+            print(f"Aviso: Evento https://matrixclient.cutefunny.art/#/room/{event['room_id']}/{event['event_id']} não possui a chave 'url' no seu conteúdo. Pulando.")
+            continue # Pula para o próximo evento se a chave 'url' não existir
+
         fields = {
             'event_id': event['event_id'],
             'room_id': event['room_id'],
@@ -50,7 +55,7 @@ def save_new_image_events(room_id, limit=None):
             'timestamp': datetime.fromtimestamp(event['origin_server_ts'] / 1000),
             'image_url': matrix_client().api.get_download_url(content['url']),
         }
-        if 'thumbnail_url' in content['info']:
+        if 'thumbnail_url' in content.get('info', {}): # Usa .get() para evitar erro se 'info' não existir
             fields['thumbnail_url'] = matrix_client().api.get_download_url(
                 content['info']['thumbnail_url'])
         image = Image(**fields)
