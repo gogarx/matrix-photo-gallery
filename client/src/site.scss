@@ -5,3 +5,39 @@
 .detail .ui.card {
     cursor: zoom-out;
 }
+
+body {
+    background-color: #181818
+}
+
+.my-masonry-grid {
+    display: flex;
+    margin-left: -15px;
+    /* gutter size offset */
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    padding-left: 15px;
+    /* gutter size */
+    background-clip: padding-box;
+}
+
+/* Opcional: estilo para os cards */
+.my-masonry-grid_column>div {
+    margin-bottom: 15px;
+}
+
+.ui.card {
+    background-color: #121212;
+    color: 'white';
+    padding: '8px';
+    display: 'inline-flex';
+    align-items: 'center';
+    justify-content: 'center';
+    max-height: '60vh';
+    overflow: 'hidden';
+    border-radius: '8px'; // cantos arredondados
+    position: 'relative';
+    cursor: 'pointer';
+}
